@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Footer from '../components/Footer.astro';
+import { projectsData } from '../data/projects';
+import ProjectCard from '../components/ProjectCard.astro';
+---
+
+<Layout title="Kamil Mahsyar Akbar | UI/UX & Front-End Developer">
+  <!-- Navbar di bagian paling atas -->
+  <Navbar />
+
+  <main class="max-w-5xl mx-auto px-6 py-12 space-y-12">
+    <!-- Bagian Hero Perkenalan -->
+    <Hero />
+
+    <!-- Bagian Tentang Saya -->
+    <About />
+
+    <!-- Bagian Keahlian Teknis -->
+    <Skills />
+
+    <!-- Bagian Daftar Proyek -->
+    <section id="projects" class="pt-8 border-t border-slate-800/80">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-8 border-b border-slate-800 pb-4">
+        Pengalaman & Proyek Pilihan 
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projectsData.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Bagian Footer & Kontak -->
+    <Footer />
+  </main>
+</Layout>

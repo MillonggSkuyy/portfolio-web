@@ -1,0 +1,66 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<div class="reveal bg-slate-900/80 border border-slate-800 rounded-xl hover:border-teal-500/50 transition-all flex flex-col justify-between overflow-hidden group">
+  <div>
+    <!-- Gambar Preview Project -->
+    {project.image && (
+      <div class="w-full h-52 overflow-hidden bg-slate-950 border-b border-slate-800">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+    )}
+
+    <!-- Konten Teks -->
+    <div class="p-6 pb-2">
+      <h3 class="text-xl font-bold text-slate-100 mb-2 group-hover:text-teal-400 transition-colors">
+        {project.title}
+      </h3>
+      <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+        {project.description}
+      </p>
+      
+      <ul class="mb-6 space-y-1.5 text-xs text-slate-300 list-disc list-inside">
+        {project.highlights.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tags & Links -->
+  <div class="p-6 pt-0">
+    <div class="flex flex-wrap gap-2 mb-4">
+      {project.tags.map((tag) => (
+        <span class="px-2.5 py-1 text-xs font-mono bg-slate-800 text-teal-300 rounded-md border border-slate-700/50">
+          {tag}
+        </span>
+      ))}
+    </div>
+
+    {(project.githubUrl || project.demoUrl) && (
+      <div class="flex items-center gap-4 text-sm font-medium pt-2 border-t border-slate-800/80">
+        {project.githubUrl && (
+          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-100 transition-colors">
+            GitHub &rarr;
+          </a>
+        )}
+        {project.demoUrl && (
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:text-teal-300 transition-colors">
+            Live Demo &rarr;
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</div>

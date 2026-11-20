@@ -1,0 +1,37 @@
+---
+const skillCategories = [
+  {
+    title: "Hard Skills & Focus Area",
+    skills: ["Front-End Development", "UI/UX Design", "Internet of Things (IoT)", "Hardware Troubleshooting", "Computer Networking"]
+  },
+  {
+    title: "Software & Tools",
+    skills: ["Figma", "Arduino IDE", "Visual Studio Code", "HTML5/CSS3", "JavaScript"]
+  },
+  {
+    title: "Soft Skills",
+    skills: ["Problem Solving", "Analytical Thinking", "Team Collaboration", "Technical Communication"]
+  }
+];
+---
+
+<section id="skills" class="py-16 border-t border-slate-800/80 reveal">
+  <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-8 border-b border-slate-800 pb-4">
+    Keahlian Teknis 
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {skillCategories.map((category) => (
+      <div class="p-6 bg-slate-900/50 border border-slate-800/80 rounded-xl">
+        <h3 class="text-lg font-bold text-teal-400 mb-4">{category.title}</h3>
+        <div class="flex flex-wrap gap-2">
+          {category.skills.map((skill) => (
+            <span class="px-3 py-1.5 text-xs font-mono bg-slate-800 text-slate-200 rounded-md border border-slate-700/50">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

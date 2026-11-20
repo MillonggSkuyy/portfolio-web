@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Efek awal: agak mengecil di belakang (scale-90) dan transparan */
+.reveal {
+  opacity: 0;
+  transform: scale(0.92) translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Efek saat masuk layar: maju ke depan ukuran normal (scale-100) */
+.reveal.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* =========================================
+   KONFIGURASI LIGHT MODE (TEMA TERANG)
+   ========================================= */
+html.light-mode body {
+  background-color: #f8fafc !important; /* slate-50 */
+  color: #0f172a !important; /* slate-900 */
+}
+
+html.light-mode header {
+  background-color: rgba(248, 250, 252, 0.85) !important;
+  border-color: #e2e8f0 !important; /* slate-200 */
+}
+
+/* Penyesuaian warna teks */
+html.light-mode .text-slate-100,
+html.light-mode .text-slate-200 {
+  color: #0f172a !important; /* slate-900 */
+}
+
+html.light-mode .text-slate-300 {
+  color: #334155 !important; /* slate-700 */
+}
+
+html.light-mode .text-slate-400 {
+  color: #475569 !important; /* slate-600 */
+}
+
+html.light-mode .text-teal-400 {
+  color: #0d9488 !important; /* teal-600 agar kontras di latar terang */
+}
+
+html.light-mode .text-teal-300 {
+  color: #0f766e !important; /* teal-700 */
+}
+
+/* Penyesuaian warna kartu & badge */
+html.light-mode .bg-slate-900\/80,
+html.light-mode .bg-slate-900\/60,
+html.light-mode .bg-slate-900\/50,
+html.light-mode .bg-slate-900 {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+}
+
+html.light-mode .bg-slate-800 {
+  background-color: #f1f5f9 !important; /* slate-100 */
+}
+
+html.light-mode .bg-teal-950\/60,
+html.light-mode .bg-teal-950\/80 {
+  background-color: #ccfbf1 !important; /* teal-100 */
+}
+
+/* Penyesuaian warna garis tepi (border) */
+html.light-mode .border-slate-800,
+html.light-mode .border-slate-800\/80,
+html.light-mode .border-slate-700,
+html.light-mode .border-slate-700\/50 {
+  border-color: #e2e8f0 !important; /* slate-200 */
+}
+
+html.light-mode .border-teal-800\/50 {
+  border-color: #99f6e4 !important; /* teal-200 */
+}

@@ -1,0 +1,79 @@
+---
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 transition-colors">
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    
+    <!-- Logo Nama -->
+    <a href="#" class="text-lg font-bold tracking-tight text-slate-100 hover:text-teal-400 transition-colors">
+      Kamil Mahsyar Akbar
+    </a>
+
+    <!-- Menu Navigasi Layar Desktop -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <a href="#about" class="hover:text-teal-400 transition-colors">Tentang</a>
+      <a href="#skills" class="hover:text-teal-400 transition-colors">Skill</a>
+      <a href="#projects" class="hover:text-teal-400 transition-colors">Project</a>
+      <a href="#contact" class="hover:text-teal-400 transition-colors">Kontak</a>
+    </nav>
+
+    <!-- Tombol Toggle Tema Gelap / Terang -->
+    <div class="flex items-center gap-4">
+      <button 
+        id="theme-toggle"
+        aria-label="Ganti Tema"
+        class="p-2 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:text-teal-400 hover:border-slate-700 transition-all cursor-pointer"
+      >
+        <!-- Ikon Bulan (Muncul saat Dark Mode aktif) -->
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+
+        <!-- Ikon Matahari (Muncul saat Light Mode aktif) -->
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const moonIcon = document.getElementById('moon-icon');
+  const sunIcon = document.getElementById('sun-icon');
+  const htmlEl = document.documentElement;
+
+  function updateIcons(isLight: boolean) {
+    if (isLight) {
+      moonIcon?.classList.add('hidden');
+      sunIcon?.classList.remove('hidden');
+    } else {
+      sunIcon?.classList.add('hidden');
+      moonIcon?.classList.remove('hidden');
+    }
+  }
+
+  // Cek tema tersimpan saat halaman dibuka
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    htmlEl.classList.add('light-mode');
+    updateIcons(true);
+  }
+
+  // Event klik tombol
+  themeToggle?.addEventListener('click', () => {
+    const isLight = htmlEl.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    updateIcons(isLight);
+  });
+</script>
